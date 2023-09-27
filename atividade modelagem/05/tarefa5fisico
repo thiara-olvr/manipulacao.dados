@@ -1,0 +1,51 @@
+/* Lógico_1: */
+
+CREATE TABLE profissionais (
+    id_professor integer PRIMARY KEY,
+    data_inicio_termino varchar(200),
+    horario_inicio_termino varchar,
+    contato varchar(200),
+    hora_aula_valor varchar(200),
+    fk_curso_id_curso integer
+);
+
+CREATE TABLE cadastro (
+    id_estudante integer PRIMARY KEY,
+    n°_identidade varchar(200),
+    contato varchar(200),
+    data_nascimento varchar(200)
+);
+
+CREATE TABLE curso (
+    id_curso integer PRIMARY KEY,
+    carga_horaria varchar(200),
+    conteudo varchar(200),
+    valores varchar(200)
+);
+
+CREATE TABLE matricula (
+    id_aluno integer PRIMARY KEY,
+    turma varhcar(200),
+    valores varchar(200),
+    data varchar(200)
+);
+
+CREATE TABLE cadastro_matricula (
+    fk_cadastro_id_estudante integer,
+    fk_matricula_id_aluno integer
+);
+ 
+ALTER TABLE profissionais ADD CONSTRAINT FK_profissionais_2
+    FOREIGN KEY (fk_curso_id_curso)
+    REFERENCES curso (id_curso)
+    ON DELETE CASCADE;
+ 
+ALTER TABLE cadastro_matricula ADD CONSTRAINT FK_cadastro_matricula_1
+    FOREIGN KEY (fk_cadastro_id_estudante)
+    REFERENCES cadastro (id_estudante)
+    ON DELETE RESTRICT;
+ 
+ALTER TABLE cadastro_matricula ADD CONSTRAINT FK_cadastro_matricula_2
+    FOREIGN KEY (fk_matricula_id_aluno)
+    REFERENCES matricula (id_aluno)
+    ON DELETE SET NULL;

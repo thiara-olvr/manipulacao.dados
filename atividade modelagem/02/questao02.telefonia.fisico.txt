@@ -1,0 +1,15 @@
+CREATE TABLE Controle (
+    id_n°_telefone integer PRIMARY KEY,
+    nome_do_contato varchar(200),
+    momento_ligacao varchar(200),
+    resgistro_agenda varchar(200),
+    ligacao_direta varchar(200)
+);
+
+CREATE TABLE Registros (
+    minutos_gastos vachar(200),
+    hora_ligacao integer,
+    n°_pulsos varchar(200),
+    id_data_ligacao integer,
+    n°_destinado varchar(200)
+);

@@ -1,0 +1,22 @@
+ controle de tarifas modelo fisico
+
+
+CREATE TABLE CADASTRO_DA_TARIFA (
+    percentual varchar(200),
+    nome_da_tarifa varchar(200),
+    data_limite varchar(200),
+    id_n°_da_prioridade interge PRIMARY KEY,
+    detalhamento varchar(200),
+    FK_execucao_tarifas_id_percentual_correspondente integer
+);
+
+CREATE TABLE execucao_tarifas (
+    descricao_da_execucao varchar(200),
+    id_percentual_correspondente integer PRIMARY KEY,
+    data_da_execucao varchar(200)
+);
+ 
+ALTER TABLE CADASTRO_DA_TARIFA ADD CONSTRAINT FK_CADASTRO_DA_TARIFA_2
+    FOREIGN KEY (FK_execucao_tarifas_id_percentual_correspondente)
+    REFERENCES execucao_tarifas (id_percentual_correspondente)
+    ON DELETE CASCADE;

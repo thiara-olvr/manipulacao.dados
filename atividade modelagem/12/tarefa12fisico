@@ -1,0 +1,14 @@
+/* Lógico_2: */
+
+CREATE TABLE loterica (
+    id_jogo integer PRIMARY KEY,
+    quina varchar(200),
+    lotomania varchar(200),
+    megasena varchar(200)
+);
+
+CREATE TABLE relatorio (
+    id_cartao integer PRIMARY KEY,
+    n°_acertos varchar(200),
+    resultados_concurso varchar(200)
+);

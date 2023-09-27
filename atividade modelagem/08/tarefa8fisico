@@ -1,0 +1,29 @@
+/* Lógico_1: */
+
+CREATE TABLE status (
+    id_usuario_aprovacao_ integer PRIMARY KEY,
+    nao_iniciado varchar(200),
+    desenvolvimento varchar(200),
+    aprovado_usuario varchar(200)
+);
+
+CREATE TABLE pacote (
+    id_pasta integer PRIMARY KEY,
+    nome_diretorio varchar(200),
+    nome_caso varchar(200)
+);
+
+CREATE TABLE pacote_status (
+    fk_pacote_id_pasta integer,
+    fk_status_id_usuario_aprovacao_ integer
+);
+ 
+ALTER TABLE pacote_status ADD CONSTRAINT FK_pacote_status_1
+    FOREIGN KEY (fk_pacote_id_pasta)
+    REFERENCES pacote (id_pasta)
+    ON DELETE RESTRICT;
+ 
+ALTER TABLE pacote_status ADD CONSTRAINT FK_pacote_status_2
+    FOREIGN KEY (fk_status_id_usuario_aprovacao_)
+    REFERENCES status (id_usuario_aprovacao_)
+    ON DELETE RESTRICT;

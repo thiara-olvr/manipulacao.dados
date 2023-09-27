@@ -1,0 +1,13 @@
+CREATE TABLE cadastro (
+    id_cliente integer PRIMARY KEY,
+    telefone varchar(200),
+    endereco varchar(200),
+    tema_festa varchar(200),
+    harario_inicio_termino varchar(200)
+);
+
+CREATE TABLE Controle (
+    id_itens integer,
+    valos_aluguel varchar(200),
+    toalhas_cor varchar(200)
+);

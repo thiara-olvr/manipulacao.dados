@@ -1,0 +1,32 @@
+/* Lógico_1: */
+
+CREATE TABLE apartamento (
+    id_n°_porta integer PRIMARY KEY,
+    qtd_quartos varchar(200),
+    tipo_ocupacao varchar(200),
+    nome_prorietario varchar(200),
+    telefone varchar(200),
+    fk_condominio__id_pagamento integer
+);
+
+CREATE TABLE condominio_ (
+    id_pagamento integer PRIMARY KEY,
+    valor_pago varchar(200),
+    fk_despesas_id_do_mes integer
+);
+
+CREATE TABLE despesas (
+    id_do_mes integer PRIMARY KEY,
+    despesas_especificas varchar(200),
+    despesas_em_grupo varchar(200)
+);
+ 
+ALTER TABLE apartamento ADD CONSTRAINT FK_apartamento_2
+    FOREIGN KEY (fk_condominio__id_pagamento)
+    REFERENCES condominio_ (id_pagamento)
+    ON DELETE RESTRICT;
+ 
+ALTER TABLE condominio_ ADD CONSTRAINT FK_condominio__2
+    FOREIGN KEY (fk_despesas_id_do_mes)
+    REFERENCES despesas (id_do_mes)
+    ON DELETE RESTRICT;

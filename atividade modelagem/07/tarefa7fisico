@@ -1,0 +1,48 @@
+/* Lógico_1: */
+
+CREATE TABLE jogo (
+    id_palavras_escondidas integer PRIMARY KEY,
+    pedacos__boneco varchar(200)
+);
+
+CREATE TABLE tema (
+    id_palavras integer PRIMARY KEY,
+    frases varchar(200),
+    fk_jogo_id_palavras_escondidas integer
+);
+
+CREATE TABLE rodadas (
+    id_sorteio integer PRIMARY KEY,
+    temas varchar(200),
+    fk_participante_id_jogador integer
+);
+
+CREATE TABLE participante (
+    id_jogador integer PRIMARY KEY,
+    pontuacao varchar(200)
+);
+
+CREATE TABLE rodadas_tema (
+    fk_rodadas_id_sorteio integer,
+    fk_tema_id_palavras integer
+);
+ 
+ALTER TABLE tema ADD CONSTRAINT FK_tema_2
+    FOREIGN KEY (fk_jogo_id_palavras_escondidas)
+    REFERENCES jogo (id_palavras_escondidas)
+    ON DELETE RESTRICT;
+ 
+ALTER TABLE rodadas ADD CONSTRAINT FK_rodadas_2
+    FOREIGN KEY (fk_participante_id_jogador)
+    REFERENCES participante (id_jogador)
+    ON DELETE CASCADE;
+ 
+ALTER TABLE rodadas_tema ADD CONSTRAINT FK_rodadas_tema_1
+    FOREIGN KEY (fk_rodadas_id_sorteio)
+    REFERENCES rodadas (id_sorteio)
+    ON DELETE RESTRICT;
+ 
+ALTER TABLE rodadas_tema ADD CONSTRAINT FK_rodadas_tema_2
+    FOREIGN KEY (fk_tema_id_palavras)
+    REFERENCES tema (id_palavras)
+    ON DELETE RESTRICT;
